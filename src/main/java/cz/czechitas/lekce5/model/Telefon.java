@@ -6,6 +6,11 @@ public class Telefon {
     private String predcisli;
     private String telefonniCislo;
 
+    public Telefon(String predcisli, String telefonniCislo) {
+        setPredcisli(predcisli);
+        setTelefonniCislo(telefonniCislo);
+    }
+
     public String getPredcisli() {
         return predcisli;
     }
@@ -25,5 +30,13 @@ public class Telefon {
             return;
         }
         this.telefonniCislo = telefonniCislo;
+    }
+
+    @Override
+    public String toString() {
+        return "Telefon{\n" +
+                "predcisli='" + predcisli + '\'' + "\n" +
+                "telefonniCislo='" + telefonniCislo + '\'' + "\n" +
+                '}';
     }
 }

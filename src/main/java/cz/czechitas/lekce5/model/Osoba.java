@@ -6,8 +6,24 @@ public class Osoba {
     private String jmeno;
     private String prijmeni;
     private String rodneCislo;
-
     private Telefon telefon;
+    private Adresa adresa;
+    private String pracovniEmail;
+    private String soukromyEmail;
+
+    public Osoba() {
+
+    }
+
+    public Osoba(String jmeno, String prijmeni, String rodneCislo, Telefon telefon, Adresa adresa,String pracovniEmail, String soukromyEmail) {
+        setJmeno(jmeno);
+        setPrijmeni(prijmeni);
+        setRodneCislo(rodneCislo);
+        setTelefon(telefon);
+        setAdresa(adresa);
+        setPracovniEmail(pracovniEmail);
+        setSoukromyEmail(soukromyEmail);
+    }
 
     public String getJmeno() {
         return jmeno;
@@ -60,8 +76,59 @@ public class Osoba {
         this.telefon = telefon;
     }
 
-    public String toString() {
-        return jmeno + " " + prijmeni + " (" + rodneCislo + ")";
+    public Adresa getAdresa() {
+        return adresa;
     }
-}
 
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
+    public String getPracovniEmail() {
+        return pracovniEmail;
+    }
+
+    public void setPracovniEmail(String pracovniEmail) {
+        Objects.requireNonNull(pracovniEmail);
+        if (pracovniEmail.isBlank()) {
+            System.err.println("Soukromý email nemůže být prázdné.");
+            return;
+        }
+        if (!pracovniEmail.contains("@")) {
+            System.err.println("Pracovní email musí obsahovat zavináč.");
+            return;
+        }
+        this.pracovniEmail = pracovniEmail;
+    }
+
+    public String getSoukromyEmail() {
+        return soukromyEmail;
+    }
+
+    public void setSoukromyEmail(String soukromyEmail) {
+        Objects.requireNonNull(soukromyEmail);
+        if (soukromyEmail.isBlank()) {
+            System.err.println("Soukromý email nemůže být prázdné.");
+            return;
+        }
+        if (!soukromyEmail.contains("@")) {
+            System.err.println("Soukromý email musí obsahovat zavináč.");
+            return;
+        }
+        this.soukromyEmail = soukromyEmail;
+    }
+
+    @Override
+    public String toString() {
+        return "Osoba{\n" +
+                "jmeno='" + jmeno + '\'' + "\n" +
+                "prijmeni='" + prijmeni + '\'' + "\n" +
+                "rodneCislo='" + rodneCislo + '\'' + "\n" +
+                "telefon=" + telefon + "\n" +
+                "adresa=\n" + adresa +  // Zavolání toString() metody na adrese
+                ", pracovniEmail='" + pracovniEmail + '\'' + "\n" +
+                ", soukromyEmail='" + soukromyEmail + '\'' + "\n" +
+                '}';
+    }
+
+}
